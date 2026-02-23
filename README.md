@@ -1,16 +1,9 @@
-# React + Vite
+# 潍坊保皇扑克游戏
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+网站介绍了潍坊保皇的规则打法和技巧：
 
-Currently, two official plugins are available:
+https://baohuang.openhubs.net/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="2530" height="1154" alt="图片" src="https://github.com/user-attachments/assets/ca9e756c-b143-4802-965f-7f4a02b720c1" />
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<img width="2532" height="1152" alt="图片" src="https://github.com/user-attachments/assets/a325b756-bc51-4b5a-877b-35b7708889e4" />

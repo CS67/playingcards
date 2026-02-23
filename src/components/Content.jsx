@@ -1,6 +1,6 @@
 import Chupai from "./Chupai";
 import Guize from "./Guize";
-import Mopai from "./mopai";
+import Mopai from "./Mopai";
 import Shanggong from "./Shanggong";
 import Zhenying from "./Zhenying";
 import Jiqiao from "./Jiqiao";

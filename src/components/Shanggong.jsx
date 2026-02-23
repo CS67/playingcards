@@ -1,13 +1,34 @@
+import { useState, useEffect } from "react";
+
 export default function Shanggong() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "1rem" : "1.5rem",
+        }}
+      >
         <div style={{ display: "flex" }}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "0.6rem",
             }}
           >
             <span>先进闷供，再进落供。</span>
@@ -18,7 +39,7 @@ export default function Shanggong() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>闷供：</h2>
@@ -31,7 +52,7 @@ export default function Shanggong() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>落供</h2>

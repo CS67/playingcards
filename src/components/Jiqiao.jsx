@@ -1,7 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Gailv from "./Gailv";
+
 export default function Jiqiao() {
   const [active, setActive] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div>
       {active === "" && (
@@ -12,10 +26,10 @@ export default function Jiqiao() {
             alignItems: "center",
             fontSize: "0.8rem",
             fontWeight: "bold",
-            width: "100px",
-            height: "40px",
+            width: isMobile ? "80px" : "100px",
+            height: isMobile ? "35px" : "40px",
             backgroundColor: "#444",
-            borderRadius: "20px",
+            borderRadius: isMobile ? "15px" : "20px",
             cursor: "pointer",
           }}
           onClick={() => setActive("摸牌概率")}

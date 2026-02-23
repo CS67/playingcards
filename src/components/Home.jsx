@@ -1,6 +1,20 @@
 import Spline from "@splinetool/react-spline";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -12,14 +26,16 @@ export default function Home() {
     <main
       style={{
         display: "flex",
-        height: "100vh",
+        flexDirection: isMobile ? "column" : "row",
+        minHeight: "100vh",
         backgroundColor: "#222222",
         color: "white",
       }}
     >
       <div
         style={{
-          width: "60%",
+          width: isMobile ? "100%" : "60%",
+          height: isMobile ? "50vh" : "100vh",
         }}
       >
         <Spline scene="https://prod.spline.design/93hY7GNhHFrnewTp/scene.splinecode" />
@@ -27,18 +43,19 @@ export default function Home() {
 
       <div
         style={{
-          width: "40%",
+          width: isMobile ? "100%" : "40%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "40px",
+          padding: isMobile ? "2rem 1rem" : "clamp(20px, 3vw, 40px)",
         }}
       >
         <h1
           style={{
-            fontSize: "4rem",
+            fontSize: isMobile ? "2.5rem" : "clamp(2rem, 4vw, 4rem)",
             fontWeight: "bold",
+            textAlign: "center",
           }}
         >
           潍坊保皇
@@ -46,7 +63,7 @@ export default function Home() {
         <span
           style={{
             fontSize: "0.7rem",
-            marginBottom: "40px",
+            marginBottom: isMobile ? "1.5rem" : "2.5rem",
           }}
         >
           经典山东扑克游戏
@@ -55,8 +72,8 @@ export default function Home() {
           onClick={scrollToNextSection}
           style={{
             border: "1px solid white",
-            padding: "15px 40px",
-            fontSize: "1.2rem",
+            padding: isMobile ? "0.8rem 2rem" : "1rem 2.5rem",
+            fontSize: isMobile ? "1rem" : "1.2rem",
             backgroundColor: "transparent",
             color: "white",
             borderRadius: "40px",

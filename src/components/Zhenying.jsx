@@ -1,13 +1,34 @@
+import { useState, useEffect } from "react";
+
 export default function Zhenying() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "1rem" : "1.5rem",
+        }}
+      >
         <div style={{ display: "flex" }}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "0.6rem",
             }}
           >
             <h2>皇帝</h2>
@@ -27,9 +48,9 @@ export default function Zhenying() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                paddingLeft: "20px",
+                paddingLeft: isMobile ? "1rem" : "1.5rem",
                 fontSize: "0.8rem",
-                gap: "5px",
+                gap: "0.3rem",
               }}
             >
               <h3>登基和侍卫</h3>
@@ -43,9 +64,9 @@ export default function Zhenying() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                paddingLeft: "20px",
+                paddingLeft: isMobile ? "1rem" : "1.5rem",
                 fontSize: "0.8rem",
-                gap: "5px",
+                gap: "0.3rem",
               }}
             >
               <h3>让位</h3>
@@ -64,7 +85,7 @@ export default function Zhenying() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "0.6rem",
             }}
           >
             <h2>侍卫 </h2>
@@ -81,9 +102,9 @@ export default function Zhenying() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                paddingLeft: "20px",
+                paddingLeft: isMobile ? "1rem" : "1.5rem",
                 fontSize: "0.8rem",
-                gap: "5px",
+                gap: "0.3rem",
               }}
             >
               <h3>明保</h3>
@@ -96,9 +117,9 @@ export default function Zhenying() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                paddingLeft: "20px",
+                paddingLeft: isMobile ? "1rem" : "1.5rem",
                 fontSize: "0.8rem",
-                gap: "5px",
+                gap: "0.3rem",
               }}
             >
               <h3>暗保</h3>
@@ -111,7 +132,7 @@ export default function Zhenying() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "0.6rem",
             }}
           >
             <h2>平民</h2>

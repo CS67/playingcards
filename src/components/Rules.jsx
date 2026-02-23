@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Content from "./Content";
 
 export default function Rules() {
   const [activeSection, setActiveSection] = useState("摸牌");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const sections = ["摸牌", "阵营", "出牌", "规则", "上贡", "技巧"];
 
@@ -42,21 +54,26 @@ export default function Rules() {
         backgroundSize: "200% 200%",
         animation: "gradientShift 8s ease infinite",
         display: "flex",
-        height: "100vh",
+        flexDirection: isMobile ? "column" : "row",
+        minHeight: "100vh",
       }}
     >
       {/* 左侧导航栏 */}
       <aside
         style={{
           backgroundColor: "#1a1a1a",
-          padding: "40px",
-          margin: "60px 20px ",
+          padding: isMobile ? "1rem" : "clamp(20px, 3vw, 40px)",
+          margin: isMobile
+            ? "1rem"
+            : "clamp(20px, 4vw, 60px) clamp(10px, 2vw, 20px)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column",
-          gap: "15px",
-          borderRadius: "20px",
+          flexDirection: isMobile ? "row" : "column",
+          gap: isMobile ? "0.5rem" : "1rem",
+          borderRadius: isMobile ? "10px" : "20px",
+          overflowX: isMobile ? "auto" : "visible",
+          flexWrap: isMobile ? "wrap" : "nowrap",
         }}
       >
         {sections.map((section) => (
@@ -64,16 +81,17 @@ export default function Rules() {
             key={section}
             onClick={() => setActiveSection(section)}
             style={{
-              padding: "15px 25px",
+              padding: isMobile ? "0.6rem 1rem" : "1rem 1.5rem",
               backgroundColor:
                 activeSection === section ? "#444444" : "transparent",
               color: "white",
               border: "1px solid #444444",
-              borderRadius: "20px",
-              fontSize: "1.1rem",
+              borderRadius: isMobile ? "10px" : "20px",
+              fontSize: isMobile ? "0.9rem" : "1.1rem",
               cursor: "pointer",
               transition: "all 0.3s ease",
               textAlign: "left",
+              whiteSpace: "nowrap",
             }}
             onMouseEnter={(e) => {
               if (activeSection !== section) {
@@ -95,25 +113,27 @@ export default function Rules() {
       <section
         style={{
           flex: 1,
-          padding: "60px 80px",
+          padding: isMobile
+            ? "1.5rem 1rem"
+            : "clamp(30px, 5vw, 60px) clamp(40px, 6vw, 80px)",
           color: "white",
           overflowY: "auto",
         }}
       >
         <h1
           style={{
-            fontSize: "3rem",
+            fontSize: isMobile ? "2rem" : "clamp(2rem, 3vw, 3rem)",
             fontWeight: "bold",
-            marginBottom: "20px",
+            marginBottom: isMobile ? "1rem" : "1.5rem",
           }}
         >
           {content[activeSection].title}
         </h1>
         <p
           style={{
-            fontSize: "1.2rem",
+            fontSize: isMobile ? "1rem" : "1.2rem",
             color: "#aaaaaa",
-            marginBottom: "40px",
+            marginBottom: isMobile ? "1.5rem" : "2.5rem",
           }}
         >
           {content[activeSection].description}

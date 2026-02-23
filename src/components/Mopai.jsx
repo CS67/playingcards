@@ -1,13 +1,42 @@
+import { useState, useEffect } from "react";
+
 export default function Mopai() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        gap: isMobile ? "1rem" : "2rem",
+        alignItems: isMobile ? "flex-start" : "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "1rem" : "1.5rem",
+          flex: 1,
+        }}
+      >
         <div style={{ display: "flex" }}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "0.6rem",
             }}
           >
             <span>5人游戏，使用4副54张的牌(52张正牌+大小王)，共216张。</span>
@@ -20,7 +49,7 @@ export default function Mopai() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>首局：</h2>
@@ -33,7 +62,7 @@ export default function Mopai() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>后续：</h2>
@@ -44,7 +73,15 @@ export default function Mopai() {
           </span>
         </div>
       </div>
-      <img src="/fapai.png" width="200" height="200" />
+      <img
+        src="/fapai.png"
+        alt="发牌示意图"
+        style={{
+          width: isMobile ? "100%" : "200px",
+          maxWidth: "200px",
+          height: "auto",
+        }}
+      />
     </div>
   );
 }

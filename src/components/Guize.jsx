@@ -1,12 +1,33 @@
+import { useState, useEffect } from "react";
+
 export default function Guize() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "1rem" : "1.5rem",
+        }}
+      >
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>规则</h2>
@@ -38,7 +59,7 @@ export default function Guize() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "0.6rem",
           }}
         >
           <h2>输赢判断</h2>
@@ -47,26 +68,28 @@ export default function Guize() {
           </span>
           <h3>保皇阵营角度：</h3>
           <span>平局</span>
-          <span style={{ paddingLeft: "20px" }}>头科/大落、二科/二落</span>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
+            头科/大落、二科/二落
+          </span>
           <span>保皇胜利</span>
-          <span style={{ paddingLeft: "20px" }}>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
             头科/二科、头科/三科、头科/二落、二科/三科
           </span>
           <span>保皇失败</span>
-          <span style={{ paddingLeft: "20px" }}>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
             二科/大落、三科/二落、三科/大落、四科/大落
           </span>
           <h3>平民阵营角度：</h3>
           <span>平局</span>
-          <span style={{ paddingLeft: "20px" }}>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
             二科/三科/四科、头科/三科/大落
           </span>
           <span>平民失败</span>
-          <span style={{ paddingLeft: "20px" }}>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
             三科/二落/大落、二科/二落/大落、二科/三科/大落、头科/二落/大落
           </span>
           <span>平民胜利</span>
-          <span style={{ paddingLeft: "20px" }}>
+          <span style={{ paddingLeft: isMobile ? "1rem" : "1.5rem" }}>
             头科/三科/二落、头科/二科/大落、头科/二科/二落、头科/二科/三科
           </span>
         </div>

@@ -1,7 +1,28 @@
+import { useState, useEffect } from "react";
+
 export default function Gailv({ setActive }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div>
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: isMobile ? "0.8rem" : "1.5rem",
+          alignItems: "center",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -9,26 +30,26 @@ export default function Gailv({ setActive }) {
             alignItems: "center",
             fontSize: "0.8rem",
             fontWeight: "bold",
-            width: "40px",
-            height: "40px",
+            width: isMobile ? "35px" : "40px",
+            height: isMobile ? "35px" : "40px",
             backgroundColor: "#444",
-            borderRadius: "20px",
+            borderRadius: isMobile ? "15px" : "20px",
             cursor: "pointer",
-            marginBottom: "20px",
+            marginBottom: isMobile ? "1rem" : "1.5rem",
           }}
           onClick={() => setActive("")}
         >
           返回
         </div>
-        <h2>摸牌概率</h2>
+        <h2 style={{ marginBottom: isMobile ? "1rem" : "1.5rem" }}>摸牌概率</h2>
       </div>
       <div
         style={{
-          paddingLeft: "20px",
+          paddingLeft: isMobile ? "1rem" : "1.5rem",
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
-          marginBottom: "20px",
+          gap: "0.6rem",
+          marginBottom: isMobile ? "1rem" : "1.5rem",
         }}
       >
         <h3>大小王</h3>
@@ -46,10 +67,10 @@ export default function Gailv({ setActive }) {
       </div>
       <div
         style={{
-          paddingLeft: "20px",
+          paddingLeft: isMobile ? "1rem" : "1.5rem",
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
+          gap: "0.6rem",
         }}
       >
         <h3>点数2</h3>

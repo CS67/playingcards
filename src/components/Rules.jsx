@@ -55,7 +55,7 @@ export default function Rules() {
         animation: "gradientShift 8s ease infinite",
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
-        minHeight: "100vh",
+        height: "100vh",
       }}
     >
       {/* 左侧导航栏 */}
@@ -138,7 +138,7 @@ export default function Rules() {
         >
           {content[activeSection].description}
         </p>
-        <div style={{ overflow: "auto" }}>
+        <div>
           <Content type={activeSection} />
         </div>
       </section>

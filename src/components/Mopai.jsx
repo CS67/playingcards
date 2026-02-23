@@ -44,7 +44,7 @@ export default function Mopai() {
           </span>
         </div>
       </div>
-      <img src="/src/assets/fapai.png" width="200" height="200" />
+      <img src="/fapai.png" width="200" height="200" />
     </div>
   );
 }

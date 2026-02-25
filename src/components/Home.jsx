@@ -89,7 +89,7 @@ export default function Home() {
             e.target.style.color = "white";
           }}
         >
-          查看规则
+          玩法规则
         </button>
       </div>
     </main>

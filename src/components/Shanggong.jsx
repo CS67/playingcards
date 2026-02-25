@@ -42,7 +42,7 @@ export default function Shanggong() {
             gap: "0.6rem",
           }}
         >
-          <h2>闷供：</h2>
+          <h2>闷供</h2>
           <span>
             如果一方出牌导致另一方最后1张3出不出去，则称为被闷。被闷方需要向闷方上供。闷供需要上自己最大的牌。
           </span>

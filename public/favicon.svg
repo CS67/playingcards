@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 卡片背景 -->
+  <rect x="8" y="4" width="84" height="92" rx="10" ry="10" fill="#ffffff" stroke="#cccccc" stroke-width="2"/>
+  <!-- 左上角 A + 花色 -->
+  <text x="16" y="28" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#cc2200">A</text>
+  <text x="18" y="44" font-family="Arial, sans-serif" font-size="16" fill="#cc2200">♥</text>
+  <!-- 中心大花色 -->
+  <text x="50" y="62" font-family="Arial, sans-serif" font-size="44" fill="#cc2200" text-anchor="middle">♥</text>
+  <!-- 右下角 A + 花色（绕中心旋转180°） -->
+  <g transform="rotate(180, 50, 50)">
+    <text x="16" y="28" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#cc2200">A</text>
+    <text x="18" y="44" font-family="Arial, sans-serif" font-size="16" fill="#cc2200">♥</text>
+  </g>
+</svg>
